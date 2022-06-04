@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&family=Permanent+Marker&display=swap');
+
+@import "assets/css/main.css";
+
+body {
+  font-family: "Anonymous Pro";
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6,
+strong {
+  font-weight: 700;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+#logo img {
+  position: absolute;
+  top: 0.8em;
+  left: 4.4em;
+  max-width: 2.2em;
+}
+#logo span {
+  font-family: 'Permanent Marker';
+}
+
+header.special.container img {
+  max-width: 10em;
+  position: absolute;
+  left: 50%;
+  margin-left: -5em;
+  top: -4em;
+}
