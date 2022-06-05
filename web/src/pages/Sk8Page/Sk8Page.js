@@ -1,5 +1,6 @@
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
+import Sk8Game from 'src/components/Sk8Game/Sk8Game'
 
 const Sk8Page = () => {
   return (
@@ -15,6 +16,7 @@ const Sk8Page = () => {
 
         <section className="wrapper style4 special container medium">
           <div className="content">
+            <Sk8Game />
             <p>{'[Put skate game component here, use react state to manage a list, with buttons to add/remove letters, last name standing wins]'}</p>
           </div>
         </section>
