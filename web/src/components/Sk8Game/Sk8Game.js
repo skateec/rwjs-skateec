@@ -195,7 +195,7 @@ const Sk8Game = () => {
         </div>
       ) : false}
       <hr />
-      <pre style={{ textAlign: "left" }}>{JSON.stringify(sk8GameState, null, 2)}</pre>
+      {/* <pre style={{ textAlign: "left" }}>{JSON.stringify(sk8GameState, null, 2)}</pre> */}
     </div>
   )
 }
