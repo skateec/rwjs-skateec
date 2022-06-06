@@ -3111,7 +3111,7 @@ body.index #main {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 10001;
+    z-index: 200;
   }
 
   #navButton .toggle {
@@ -3237,21 +3237,14 @@ body.index #main {
     width: 5em;
   }
 
-  body.navPanel-visible #page-wrapper {
+  #navButton.visible {
     -moz-transform: translateX(275px);
     -webkit-transform: translateX(275px);
     -ms-transform: translateX(275px);
     transform: translateX(275px);
   }
 
-  body.navPanel-visible #navButton {
-    -moz-transform: translateX(275px);
-    -webkit-transform: translateX(275px);
-    -ms-transform: translateX(275px);
-    transform: translateX(275px);
-  }
-
-  body.navPanel-visible #navPanel {
+  #navPanel.visible {
     -moz-transform: translateX(0);
     -webkit-transform: translateX(0);
     -ms-transform: translateX(0);
