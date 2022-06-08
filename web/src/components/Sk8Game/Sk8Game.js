@@ -211,7 +211,7 @@ const Sk8Game = () => {
                     <span>{p.playername}</span>
                   </div>
                   <div className="col-4 text-center">
-                    <span>{p.letters}</span>
+                    <span className="marker">{p.letters}</span>
                   </div>
                   <div className="col-4 text-right">
                     {(p.letters.length > 0) ? (
