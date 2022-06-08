@@ -17,9 +17,19 @@ h4,
 h5,
 .h5,
 h6,
-.h6,
+.h6 {
+  font-family: "Permanent Marker";
+  font-weight: 700;
+}
 strong {
   font-weight: 700;
+}
+.marker {
+  font-family: "Permanent Marker";
+}
+
+.striked {
+  text-decoration: line-through;
 }
 
 .visually-hidden {
@@ -69,7 +79,7 @@ header.special.container img {
 
 form#addPlayerForm input {
   /* font-family: "Permanent Marker"; */
-  font-size: 1.5em
+  font-size: 1.5em;
 }
 form#addPlayerForm button[type="submit"] {
   width: 100%;

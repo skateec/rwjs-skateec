@@ -11,13 +11,12 @@ const Sk8Page = () => {
         <header className="special container">
           <span className="icon solid fa-hashtag"></span>
           <h2>sk8</h2>
-          <p>Play a game of skate, with this handy little letter tracker tool!</p>
+          <p>Play a game of skate, and keep track of who has what letters here!</p>
         </header>
 
         <section className="wrapper style4 special container medium">
           <div className="content">
             <Sk8Game />
-            <p>{'[Put skate game component here, use react state to manage a list, with buttons to add/remove letters, last name standing wins]'}</p>
           </div>
         </section>
       </article>

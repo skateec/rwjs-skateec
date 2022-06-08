@@ -1,17 +1,15 @@
 import { FieldError, Form, Label, NumberField, Submit, TextField } from "@redwoodjs/forms"
 import { useState } from "react"
 
-import { v4 as uuidv4 } from 'uuid'
-
 const Sk8Game = () => {
   const [sk8GameState, setSk8GameState] = useState({
+    sk8Word: "skate",
     inProgress: false,
     editingPlayers: false,
-    players: [],
     pIdLimit: 0,
-    outOrder: [],
+    players: [],
+    outPlayers: [],
     lastWinner: [],
-    sk8Word: "skate"
   })
 
   const editPlayers = (e) => {
@@ -27,9 +25,9 @@ const Sk8Game = () => {
       ...sk8GameState,
       inProgress: false,
       editingPlayers: false,
-      players: [],
       pIdLimit: 0,
-      outOrder: [],
+      players: [],
+      outPlayers: [],
     })
   }
 
@@ -84,13 +82,14 @@ const Sk8Game = () => {
     const list = sk8GameState.players
 
     for (var i = 0; i < list.length; i++) {
+
       if (list[i].playerId === pid) {
         let nli = parseInt(list[i].letters.length)
+        let ll = nli + 1
 
-        if (list[i].letters.length + 1 === sk8GameState.sk8Word.length) {
+        if (ll === sk8GameState.sk8Word.length) {
           list[i].letters = sk8GameState.sk8Word
-
-          console.log("move player out!")
+          yerOuttaHere(pid)
         } else {
           list[i].letters = list[i].letters.concat(sk8GameState.sk8Word[nli])
         }
@@ -118,6 +117,25 @@ const Sk8Game = () => {
       ...sk8GameState,
       players: list,
     })
+  }
+
+  const yerOuttaHere = (pid) => {
+    const pList = sk8GameState.players
+    const oList = sk8GameState.outPlayers
+
+    for (var i = 0; i < pList.length; i++) {
+      if (pList[i].playerId === pid) {
+        oList.push(pList[i])
+
+        pList.splice(i, 1)
+
+        setSk8GameState({
+          ...sk8GameState,
+          players: pList,
+          outPlayers: oList,
+        })
+      }
+    }
   }
 
   return (
@@ -180,22 +198,59 @@ const Sk8Game = () => {
         <div className="playerEditList">
           {sk8GameState.players.map((p) => (
             <div key={p.playerId} className="row">
-              <div className="col-4 text-left">
-                <span>{p.playername}</span>
-              </div>
-              <div className="col-4 text-center">
-                <span>{p.letters}</span>
-              </div>
-              <div className="col-4 text-right">
-                <button onClick={() => { removeLetter(p.playerId) }}><i className="fa fa-minus"></i></button>
-                {' '}<button onClick={() => { addLetter(p.playerId) }}><i className="fa fa-plus"></i></button>
-              </div>
+
+              {(sk8GameState.players.length == 1) ? (
+                <>
+                  <div className="col-12 text-center">
+                    <span>{p.playername} Won!</span>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="col-4 text-left">
+                    <span>{p.playername}</span>
+                  </div>
+                  <div className="col-4 text-center">
+                    <span>{p.letters}</span>
+                  </div>
+                  <div className="col-4 text-right">
+                    {(p.letters.length > 0) ? (
+                      <button onClick={() => { removeLetter(p.playerId) }}><i className="fa fa-minus"></i></button>
+                    ) : (
+                      <button disabled><i className="fa fa-minus"></i></button>
+                    )}
+                    {(p.letters.length < sk8GameState.sk8Word.length) ? (
+                      <button onClick={() => { addLetter(p.playerId) }}><i className="fa fa-plus"></i></button>
+                    ) : (
+                      <button disabled><i className="fa fa-plus"></i></button>
+                    )}
+                  </div>
+                </>
+              )}
             </div>
           ))}
+
+          {(sk8GameState.outPlayers.length > 0) ? (
+            <>
+              <hr />
+              <h6>Out</h6>
+
+              {sk8GameState.outPlayers.map((p) => (
+                <div key={p.playerId} className="row">
+                  <div className="col-6 text-right">
+                    <span>{p.playername}:</span>
+                  </div>
+                  <div className="col-6 text-left">
+                    <span class="striked">{p.letters}</span>
+                  </div>
+                </div>
+              ))}
+            </>
+          ) : (false)}
+
         </div>
       ) : false}
       <hr />
-      {/* <pre style={{ textAlign: "left" }}>{JSON.stringify(sk8GameState, null, 2)}</pre> */}
     </div>
   )
 }
