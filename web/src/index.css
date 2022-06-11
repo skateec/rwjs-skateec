@@ -79,20 +79,20 @@ header.special.container img {
 
 form#addPlayerForm input {
   /* font-family: "Permanent Marker"; */
-  font-size: 1.5em;
+  font-size: 1em;
 }
 form#addPlayerForm button[type="submit"] {
   width: 100%;
   height: 100%;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 .playerEditList {
-  font-size: 2.5em;
+  font-size: 1.5em;
   /* font-family: "Permanent Marker"; */
 }
 .playerEditList .fa {
-  font-size: 3em;
+  font-size: 2em;
 }
 .playerEditList .row {
   margin: 0;
@@ -103,4 +103,10 @@ form#addPlayerForm button[type="submit"] {
 }
 .playerEditList > div:nth-child(odd) {
   background: rgb(240, 240, 240, 0.86);
+}
+
+hr {
+  border: 1px solid lightgray;
+  margin: 2rem auto;
+  max-width: 75%;
 }
